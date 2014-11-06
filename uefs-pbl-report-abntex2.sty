@@ -1,0 +1,101 @@
+%%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) para a Universidade Federal da Bahia
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is João Carlos Nunes Bittencourt, joaocarlos@ieee.org
+%%
+%% Further information about abnTeX2 are available on http://abntex2.googlecode.com/
+%%
+
+% ---
+% INICIO DAS CUSTOMIZACOES PARA A UNIVERSIDADE FEDERAL DA BAHIA
+% ---
+
+\ProvidesPackage{uefs-pbl-report-abntex2}[2014/10/18 Criacao desta customizacao do abnTeX2]
+
+% altera o tamanho das fontes nos capitulos e sections
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+\renewcommand{\ABNTEXsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsectionfont}{\bfseries}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+
+\newcommand{\tutor}[1]{\renewcommand{\tutor}{#1}}
+\newcommand{\modulo}[1]{\renewcommand{\modulo}{#1}}
+\newcommand{\departamento}[1]{\renewcommand{\departamento}{#1}}
+\newcommand{\imprimirmodulo}{\modulo}
+\newcommand{\imprimirtutor}{\tutor}
+\newcommand{\imprimirdepartamento}{\departamento}
+
+\newcommand*{\taxaespacomeio}{.5}
+
+\newcommand{\imprimircabecalho}{ %
+  \begin{center}
+    {\ABNTEXchapterfont\bfseries\MakeUppercase{\imprimirinstituicao}} \par
+    {\normalfont\MakeUppercase{Departamento de \imprimirdepartamento}} \par
+    {\normalfont\MakeUppercase{\imprimirmodulo}} \par
+    {\ABNTEXchapterfont\bfseries\MakeUppercase{\imprimirtitulo}} \par
+    \imprimirautor \par
+  \end{center}
+  \textbf{Tutor:} \imprimirtutor \par
+  \vspace{0.5cm}
+}
+
+\makepagestyle{uefs-pbl}
+  %%cabeçalhos
+  \makeevenhead{uefs-pbl} %%pagina par
+     {}
+     {\imprimirtitulo}
+     {}
+  \makeoddhead{uefs-pbl} %%pagina ímpar ou com oneside
+     {}
+     {\small\imprimirtitulo}
+     {}
+  \makeheadrule{uefs-pbl}{\textwidth}{\normalrulethickness} %linha
+  %% rodapé
+  \makeevenfoot{uefs-pbl}
+     {} %%pagina par
+     {\thepage}
+     {} 
+  \makeoddfoot{uefs-pbl} %%pagina ímpar ou com oneside
+     {}
+     {\thepage}
+     {}
+
+\makepagestyle{uefs-pbl-capitulo}
+\makeoddhead{uefs-pbl-capitulo}{}{}{}
+\makeoddfoot{uefs-pbl-capitulo}{}{\thepage}{}
+
+\def\@makechapterhead#1{%
+  \vspace{0.5cm}
+  {%
+    \noindent
+    \textbf{\thechapter\hspace{2ex}\MakeUppercase{#1}}
+    \par
+  }%
+  \vspace{0.5cm}
+}
+
+% Defining how is typeset the \chapter*
+\def\@makeschapterhead#1{%
+  {%
+    \centering
+    \textbf{\MakeUppercase{#1}}
+    \par
+  }%
+  \vspace{\baselineskip}
+}
+
+\renewcommand{\arraystretch}{1.5}
